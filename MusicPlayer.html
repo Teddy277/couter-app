@@ -1,0 +1,242 @@
+ <!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="MusicPlayer.css">
+
+  <script src="https://kit.fontawesome.com/0cd674afec.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="music-container">
+
+      <nav>
+        <div class="circle">
+     <i class="fa-solid fa-angle-left"></i>
+        </div>
+        <div class="circle">
+     <i class="fa-solid fa-bars"></i>
+        </div>
+
+      </nav>
+
+
+      <img src="images/musician.jpg" class="song-img" alt="">
+      <h1>እምቧ በይ ላሚቷ</h1>
+      <p>Tedros Tigabu ft. Chris Brown</p>
+
+      <audio id="song" >
+        <source src="musics/6 - Rophnan - Essey.mp3">
+      </audio>
+      
+      <input type="range"  value="0" id="progress">
+   
+      
+      <div class="controls">
+  
+        <div><i class="fa-solid fa-backward"></i></div>
+        <div onclick="playPause()" ><i class="fa-solid fa-play" id="playBtn"></i></div>
+        <div><i class="fa-solid fa-forward"></i></div>
+      </div>
+    </div> 
+
+
+  </div>
+
+
+  <script>
+
+    let progress=document.getElementById('progress');
+    let song=document.getElementById('song');
+    let playBtn=document.getElementById('playBtn');
+
+
+    song.onloadedmetadata=function(){
+      progress.max=song.duration;
+      progress.value=song.currentTime;
+    }
+    
+     function playPause(){      
+
+      console.log('fuck')
+      if(playBtn.classList.contains('fa-pause')){
+
+        song.pause();
+        playBtn.classList.remove('fa-pause');
+        playBtn.classList.add('fa-play')
+        
+      }
+      else{
+        song.play();
+        playBtn.classList.add('fa-pause');
+        playBtn.classList.remove('fa-play')
+      }
+
+    }
+
+    song.onplay = function() { // Event listener for when the song starts playing
+ setInterval(() => {
+  progress.value = song.currentTime;
+ }, 500);
+};
+
+// Stop the progress bar update interval when the song pauses
+song.onpause = function() {
+ clearInterval(song.progressInterval); // Stop the interval
+};
+    progress.onchange=function(){
+      song.play();
+      song.currentTime=progress.value;
+      playBtn.classList.add('fa-pause')
+      playBtn.classList.remove('fa-play')
+    }
+ 
+
+
+
+  </script>
+
+</body>
+</html> 
+
+ -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<link rel="stylesheet" href="MusicPlayer.css">
+</head>
+<body>
+
+  <div class="music-container">
+
+  <div class="container">
+
+    <nav>
+      <div class="buttons">
+
+    <button><</button>
+        
+      </div>
+<div class="buttons">
+
+  <button>=</button>
+</div>
+    </nav>
+
+    <img src="images/musician.jpg" alt="">
+
+    <h1>እምቧ በይ ላሚቷ </h1>
+    <p>tedros ft tedaman</p>
+
+    <audio class="song"  >
+    <source src="musics/01_ጥቁር_ሰዉ_Tikur_Sew_Theodros_Kassahun.mp3">
+    </audio>
+
+    <input type="range" prgoress="100" id="progress">
+
+    <div class="controls">
+      <button class="btn"><</button>
+      <button onclick="play()" class="playbtn fa-pause" >=</button>
+      <button class="btn">></button>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+<script>
+
+  let song=document.querySelector('.song');
+  let progress=document.querySelector('#progress');
+  let playBtn=document.querySelector('.playbtn');
+
+  song.onloadedmetadata=function(){
+    progress.max=song.duration;
+    progress.duration=song.currentTime;
+  }
+
+   function play(){
+
+    if(playBtn.classList.contains('fa-pause')){
+
+      song.pause();
+       playBtn.classList.remove('fa-pause');
+       playBtn.classList.add('fa-play')
+       console.log(playBtn.classList)
+    }
+    else if( playBtn.classList.contains('fa-play')){
+      song.play();
+      playBtn.classList.remove('fa-play')
+      playBtn.classList.add('fa-pause') 
+    }
+
+
+   }
+
+   song.onplay=function(){
+    setInterval(() => {
+      progress.value=song.currentTime; 
+    }, 500);
+   }
+
+   song.onpause=function(){
+    clearInterval(song.progressInterval)
+   }
+
+   progress.onchange=function(){
+    song.play();
+   song.currentTime=progress.value;
+    playBtn.classList.add('fa-pause');
+    playBtn.classList.remove('fa-play');
+   }
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
